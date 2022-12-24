@@ -5,7 +5,7 @@ const fileUpload = require("express-fileupload");
 const admin = require("firebase-admin");
 
 // Create a new express application instance
-const PORT = 5000;
+const PORT = 4000;
 const app = express();
 
 // Verify if the HTTP Request has been created on my React.js app and is not fradulent
@@ -111,6 +111,9 @@ app.post("/notif", [appCheckVerification], (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
-  console.log(`Server started on  http://localhost:${PORT}`);
+app.listen(4000, () => {
+  console.log("App is listening to port 4000")
 });
+// app.listen(PORT, () => {
+//   console.log(`Server started on  http://localhost:${PORT}`);
+// });
