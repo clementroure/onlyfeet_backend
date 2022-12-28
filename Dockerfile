@@ -15,5 +15,5 @@ RUN npm install
 # Copy app source to /usr/src/app
 COPY . .
 # Run the app
-EXPOSE 5000
+EXPOSE 4000
 CMD [ "npm", "run", "start" ]

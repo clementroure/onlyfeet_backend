@@ -55,7 +55,7 @@ app.post("/compress-video", (req, res) => {
     // Create a new child process
     const child = fork("video.js");
     // Send message to child process
-    child.send({ tempFilePath, name: video.name });
+    child.send({ tempFilePath, name: video.name, video_id: req.body.video_id, video_url: req.body.video_url, video_desc: req.body.video_desc, user_id: req.body.user_id, first_video: req.body.first_video });
     // Listen for message from child process
     child.on("message", (message) => {
       const { statusCode, text } = message;
@@ -111,9 +111,6 @@ app.post("/notif", [appCheckVerification], (req, res) => {
 });
 
 // Start the server
-app.listen(4000, () => {
-  console.log("App is listening to port 4000")
+app.listen(PORT, () => {
+  console.log(`Server started on  http://localhost:${PORT}`)
 });
-// app.listen(PORT, () => {
-//   console.log(`Server started on  http://localhost:${PORT}`);
-// });
