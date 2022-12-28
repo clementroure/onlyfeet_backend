@@ -4,6 +4,8 @@
 .pnp.js
 build
 /build
+temp
+/temp
 
 # misc
 # .DS_Store
