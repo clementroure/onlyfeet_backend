@@ -26,7 +26,7 @@ const s3 = new AWS.S3({
 
 //
 process.on("message", (payload) => {
-const { tempFilePath,  new_convo, conversations_id, conversations_user_0, conversations_user_1, conversations_last_msg, messages_id, messages_convo_id, messages_sender, messages_text, messages_media_url, messages_is_snap, messages_is_locked} = payload;
+const { tempFilePath, name, new_convo, conversations_id, conversations_user_0, conversations_user_1, conversations_last_msg, messages_id, messages_convo_id, messages_sender, messages_text, messages_media_url, messages_is_snap, messages_is_locked} = payload;
 const endProcess = (endPayload) => {
   const { statusCode, text } = endPayload;
   // Remove temp file
