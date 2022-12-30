@@ -52,7 +52,7 @@ ffmpeg(tempFilePath)
 
     fs.readFile((`./temp/${name}`), function (err, data) {
        
-      let params_output = {Bucket: `${process.env.DO_SPACES_NAME}`, Key: "messages/videos/"+ messages_id +".mp4", Body: data, ContentType: 'video/mp4', ACL:'public-read'};
+      let params_output = {Bucket: `${process.env.DO_SPACES_NAME}`, Key: "messages/videos/"+ messages_id, Body: data, ContentType: 'video/mp4', ACL:'public-read'};
       s3.upload(params_output)
       .on('httpUploadProgress', function(evt) { 
         console.log(evt); 
