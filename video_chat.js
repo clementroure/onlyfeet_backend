@@ -78,7 +78,7 @@ ffmpeg(tempFilePath)
             text: messages_text,
             media_url: messages_media_url,
             isAudio: false,
-            isVideo: false,
+            isVideo: true,
             isSnap: messages_is_snap == "true",
             isLocked: parseInt(messages_is_locked),
             date: new Date(),
