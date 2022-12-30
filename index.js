@@ -85,7 +85,7 @@ app.post("/compress-video-chat", (req, res) => {
     // Create a new child process
     const child = fork("video_chat.js");
     // Send message to child process
-    child.send({ tempFilePath, new_convo: new_convo, conversations_id: conversations_id, conversations_user_0: conversations_user_0, conversations_user_1: conversations_user_1, conversations_last_msg: conversations_last_msg, messages_id: messages_id, messages_convo_id: messages_convo_id, messages_sender: messages_sender, messages_text: messages_text, messages_media_url: messages_media_url, messages_is_snap: messages_is_snap, messages_is_locked: messages_is_locked});
+    child.send({ tempFilePath, new_convo: req.body.new_convo, conversations_id: req.body.conversations_id, conversations_user_0: req.body.conversations_user_0, conversations_user_1: req.body.conversations_user_1, conversations_last_msg: req.body.conversations_last_msg, messages_id: req.body.messages_id, messages_convo_id: req.body.messages_convo_id, messages_sender: req.body.messages_sender, messages_text: req.body.messages_text, messages_media_url: req.body.messages_media_url, messages_is_snap: req.body.messages_is_snap, messages_is_locked: req.body.messages_is_locked});
     // Listen for message from child process
     child.on("message", (message) => {
       const { statusCode, text } = message;
