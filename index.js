@@ -74,6 +74,28 @@ app.post("/compress-video", (req, res) => {
   }
 });
 
+app.post("/compress-video-chat", (req, res) => {
+  const video = req.files.video;
+
+  // When file is uploaded it is stored in temp file
+  // this is made possible by express-fileupload
+  const tempFilePath = video.tempFilePath;
+
+  if (video && tempFilePath) {
+    // Create a new child process
+    const child = fork("video_chat.js");
+    // Send message to child process
+    child.send({ tempFilePath, new_convo, conversations_id, conversations_user_0, conversations_user_1, conversations_last_msg, messages_id, messages_convo_id, messages_sender, messages_text, messages_media_url, messages_is_snap, messages_is_locked});
+    // Listen for message from child process
+    child.on("message", (message) => {
+      const { statusCode, text } = message;
+      res.status(statusCode).send(text);
+    });
+  } else {
+    res.status(400).send("No file uploaded");
+  }
+});
+
 // notifs with firebase
 app.post("/notif", [appCheckVerification], (req, res) => { 
 
