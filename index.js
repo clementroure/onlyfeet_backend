@@ -22,7 +22,7 @@ const appCheckVerification = async (req, res, next) => {
     return next();
   } catch (err) {
     res.status(401);
-    return next("Unauthorized");
+    return next("Unauthorized: " + err);
   }
 };
 
