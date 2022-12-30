@@ -79,8 +79,8 @@ ffmpeg(tempFilePath)
             media_url: messages_media_url,
             isAudio: false,
             isVideo: false,
-            isSnap: messages_is_snap,
-            isLocked: messages_is_locked,
+            isSnap: messages_is_snap == "true",
+            isLocked: parseInt(messages_is_locked),
             date: new Date(),
           }; 
           await db.collection('conversations').doc(conversations_id).update(data_conversations).catch(err => endProcess({ statusCode: 400, text: err }));
@@ -92,15 +92,15 @@ ffmpeg(tempFilePath)
             user_0: conversations_user_0,
             user_1: conversations_user_1,
             last_msg: conversations_last_msg,
-            blocked_status: 0,
+            blocked_status: parseInt(0),
             last_msg_date: new Date(),
           };  
           const data_messages = {
             video_url: video_url,
             desc: video_desc,
             thumbnail_url: "",
-            likes: 0,
-            score: 0,
+            likes: parseInt(0),
+            score: parseInt(0),
             date: new Date(),
           }; 
           await db.collection('conversations').doc(conversations_id).update(data_conversations).catch(err => endProcess({ statusCode: 400, text: err }));
