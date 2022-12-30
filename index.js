@@ -8,6 +8,14 @@ const admin = require("firebase-admin");
 const PORT = 4000;
 const app = express();
 
+// Firebase Initialization //
+var serviceAccount = require("./google.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: `${process.env.FB_DATABASE_URL}`
+});
+
 // Verify if the HTTP Request has been created on my React.js app and is not fradulent
 const appCheckVerification = async (req, res, next) => {
   const appCheckToken = req.header("X-Firebase-AppCheck");
